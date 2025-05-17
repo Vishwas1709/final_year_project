@@ -15,7 +15,9 @@ def get_db_connection():
     )
 
 @app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def login():
+    message = None  # Ensure 'message' is always defined
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -36,7 +38,11 @@ def login():
             elif password == stored_password:
                 session['role'] = role
                 return redirect(url_for('customer'))
-    return render_template('login.html', message="Invalid credentials")
+
+        message = "Invalid username or password"
+
+    return render_template('login.html', message=message)
+
 
 @app.route('/customer', methods=['GET', 'POST'])
 def customer():

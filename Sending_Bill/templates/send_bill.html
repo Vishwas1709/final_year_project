@@ -1,27 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Send Bill</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Send Bill</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f0f4ff, #e0eaff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 2rem 3rem;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #1e3a8a;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #374151;
+      text-align: left;
+      font-weight: 500;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    input[type="text"]:focus {
+      border-color: #2563eb;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    }
+
+    button {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #1e40af;
+    }
+
+    .message {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      background-color: #d1fae5;
+      color: #065f46;
+      border-radius: 6px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
     <h2>Send Bill to Customer</h2>
     <form method="POST" action="/send-bill">
-        <label for="customer_id">Customer ID:</label>
-        <input 
-            type="text" 
-            id="customer_id" 
-            name="customer_id" 
-            required 
-            placeholder="Enter Customer ID"
-            title="Enter the customer ID to send the bill"
-        >
-        <button type="submit">Send Bill</button>
+      <label for="customer_id">Customer ID:</label>
+      <input 
+        type="text" 
+        id="customer_id" 
+        name="customer_id" 
+        required 
+        placeholder="Enter Customer ID"
+        title="Enter the customer ID to send the bill"
+      />
+      <button type="submit">Send Bill</button>
     </form>
 
     {% if message %}
-        <p>{{ message }}</p>
+      <div class="message">{{ message }}</div>
     {% endif %}
+  </div>
 </body>
 </html>
