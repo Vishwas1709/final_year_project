@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Bill</title>
+</head>
+<body>
+    <h2>Send Bill to Customer</h2>
+    <form method="POST" action="/send-bill">
+        <label for="customer_id">Customer ID:</label>
+        <input 
+            type="text" 
+            id="customer_id" 
+            name="customer_id" 
+            required 
+            placeholder="Enter Customer ID"
+            title="Enter the customer ID to send the bill"
+        >
+        <button type="submit">Send Bill</button>
+    </form>
+
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+</body>
+</html>

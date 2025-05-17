@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Details</title>
+</head>
+<body>
+    <h2>Welcome, {{ role }}!</h2>
+
+    <form action="/customer" method="POST">
+        <label for="customer_id">Enter Customer ID:</label>
+        <input type="text" id="customer_id" name="customer_id" required>
+        <button type="submit">Fetch</button>
+    </form>
+
+    {% if customer %}
+        <h3>Customer Information:</h3>
+        <ul>
+            {% for key, value in customer.items() %}
+                <li><strong>{{ key }}:</strong> {{ value }}</li>
+            {% endfor %}
+        </ul>
+    {% elif message %}
+        <p>{{ message }}</p>
+    {% endif %}
+</body>
+</html>
