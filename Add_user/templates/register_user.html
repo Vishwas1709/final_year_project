@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Registration</title>
+  <style>
+    body {
+      background-image: url("https://images.unsplash.com/photo-1603297631959-37d0e1789741");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .register-container {
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      width: 300px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 8px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #00aaff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .message {
+      margin-top: 10px;
+      color: lightgreen;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-container">
+    <h2>Create New User</h2>
+    <form action="/register" method="POST">
+      <label for="username">Username:</label>
+      <input 
+        type="text" 
+        name="username" 
+        id="username"
+        placeholder="Enter username"
+        title="Username"
+        required 
+      />
+
+      <label for="password">Password:</label>
+      <input 
+        type="password" 
+        name="password" 
+        id="password"
+        placeholder="Enter password"
+        title="Password"
+        required 
+      />
+
+      <label for="role">Role:</label>
+      <select name="role" id="role" title="User Role" required>
+        <option value="">Select Role</option>
+        <option value="admin">Admin</option>
+        <option value="user">User</option>
+      </select>
+
+      <button type="submit">Register</button>
+    </form>
+    {% if message %}
+      <div class="message">{{ message }}</div>
+    {% endif %}
+  </div>
+</body>
+</html>

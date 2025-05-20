@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Energy Billing Portal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.65);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            color: #2c3e50;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        .card h1 {
+            margin-bottom: 10px;
+            font-size: 28px;
+            color: #1a237e;
+        }
+
+        .card p {
+            margin-bottom: 30px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input[type="number"] {
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #1565c0;
+            box-shadow: 0 0 5px rgba(21, 101, 192, 0.5);
+        }
+
+        button {
+            padding: 12px;
+            border: none;
+            background-color: #1565c0;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0d47a1;
+        }
+
+        .message {
+            margin-top: 25px;
+            font-size: 18px;
+            color: #2e7d32;
+        }
+
+        .icon {
+            font-size: 50px;
+            color: #1565c0;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 30px 20px;
+            }
+
+            .card h1 {
+                font-size: 22px;
+            }
+
+            .icon {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="card">
+            <div class="icon">
+                <i class="fas fa-bolt"></i>
+            </div>
+            <h1>Monthly Energy Bill</h1>
+            <p>Enter the month and year to generate your electricity bill</p>
+            <form method="POST">
+                <input type="number" name="month" placeholder="Month (1-12)" min="1" max="12" required>
+                <input type="number" name="year" placeholder="Year (e.g. 2025)" required>
+                <button type="submit"><i class="fas fa-file-invoice-dollar"></i> Generate Bill</button>
+            </form>
+
+            {% if message %}
+                <div class="message">{{ message }}</div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

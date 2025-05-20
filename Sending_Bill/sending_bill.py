@@ -109,18 +109,3 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 
-# define bill generation end point
-#@app.route('/generate-bill', methods=['POST'])
-# def generate_bill():
-#     customer_id = request.form.get('customer_id')
-#     month = request.form.get('month')
-#     year = request.form.get('year')
-#     units_used = request.form.get('units_used')
-
-
-#  this api should call the generate_daily_usage_for_month.py
-#  this api generate_bill.py
-
-#define user athentication end point
-# @app.route('/authenticate', methods=['POST'])
-
